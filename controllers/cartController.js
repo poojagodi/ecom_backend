@@ -7,7 +7,7 @@ exports.addToCart=async(req,res)=>{
 
         let cart=await Cart.findOne({userId:req.user.id})
         if(!cart){
-            cart=new Cart({userId:req.user.id,items:[]})
+            cart=new Cart({userId:req.user.id,items:[]}) 
         }
 
         const existingitem=cart.items.find((item)=> item.productId && item.productId.toString()=== productId.toString())

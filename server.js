@@ -7,7 +7,18 @@ const cartrouter = require('./routes/cartRoutes');
 
 const app=express();
 
-app.use(cors())
+const allowedOrigins=[ecom-fronted-gzy2kleyz-pooja-godis-projects.vercel.app,ecom-fronted-ten.vercel.app
+]
+app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allows cookies and authentication headers if needed
+  }))
 app.use(express.json())
 
 
